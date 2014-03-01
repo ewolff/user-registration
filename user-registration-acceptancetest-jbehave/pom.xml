@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ewolff</groupId>
+	<artifactId>user-registration-acceptancetest-jbehave</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<jbehave.version>3.9</jbehave.version>
+	</properties>
+
+	<parent>
+		<groupId>com.ewolff</groupId>
+		<artifactId>user-registration</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ewolff</groupId>
+			<artifactId>user-registration-application</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>3.9</version>
+				<dependencies>
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>1.2.17</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>run-stories-as-embeddables</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>**/*Scenarios.java</include>
+							</includes>
+							<ignoreFailureInStories>false</ignoreFailureInStories>
+							<ignoreFailureInView>false</ignoreFailureInView>
+						</configuration>
+						<goals>
+							<goal>run-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<url>http://repo.springsource.org/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/milestone</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>http://repo.springsource.org/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+</project>

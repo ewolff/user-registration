@@ -4,20 +4,48 @@
 	<groupId>com.ewolff</groupId>
 	<artifactId>user-registration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.0.0.RC3</version>
+		<version>1.0.0.RC4</version>
 	</parent>
 
-  <modules>
-    <module>user-registration-application</module>
-    <module>user-registration-acceptancetest-jbehave</module>
-  </modules>
+	<modules>
+		<module>user-registration-application</module>
+		<module>user-registration-acceptancetest-jbehave</module>
+	</modules>
 
-  <dependencies>
-  </dependencies>
+	<dependencies>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<url>http://repo.springsource.org/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/milestone</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>http://repo.springsource.org/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<url>http://repo.springsource.org/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 
 </project>

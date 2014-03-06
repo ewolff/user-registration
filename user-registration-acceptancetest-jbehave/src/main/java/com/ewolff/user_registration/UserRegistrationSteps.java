@@ -1,9 +1,8 @@
 package com.ewolff.user_registration;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -19,8 +18,12 @@ public class UserRegistrationSteps {
 	@Autowired
 	RegistrationService registrationService;
 
-	private User user;
+	private User kunde;
 	private boolean fehler = false;
+
+	private User andererKunde;
+
+	private boolean andererKundeRegistrierungErfolg;
 
 	public UserRegistrationSteps() {
 		super();
@@ -33,29 +36,59 @@ public class UserRegistrationSteps {
 		autowiredAnnotationBeanPostProcessor.processInjection(this);
 	}
 
-	@Given("ein neuer Kunde mit EMail $email und Vorname $vorname und Name $name")
-	public void gegebenKunde(String email, String vorname, String name) {
-		user = new User(vorname, name, email);
+	@BeforeStory
+	public void cleanUp() {
+		registrationService.clean();
 	}
 
-	@When("der Kunde sich registriert")
-	public void register() {
+	@Given("ein neuer Kunde mit EMail $email Vorname $vorname Name $name")
+	public void gegebenKunde(String email, String vorname, String name) {
+		kunde = new User(vorname, name, email);
+	}
+
+	@Given("ein anderer Kunde mit EMail $email Vorname $vorname Name $name")
+	public void gegebenAndererKunde(String email, String vorname, String name) {
+		andererKunde = new User(vorname, name, email);
+	}
+
+	@When("der andere Kunde sich registriert")
+	public void registerAndererKunde() {
 		try {
-			registrationService.register(user);
+			andererKundeRegistrierungErfolg = registrationService
+					.register(andererKunde);
 		} catch (IllegalArgumentException ex) {
 			fehler = true;
 		}
 	}
 
-	@Then("sollte ein Kunde mit der EMail $email existieren und es sollte kein Fehler gemeldet werden")
+	@When("der Kunde dann geloescht wird")
+	public void loescheKunde() {
+		registrationService.unregister(kunde.getEmail());
+	}
+
+	@Then("sollte ein Kunde mit der EMail $email existieren")
 	public void existiert(String email) {
 		assertNotNull(registrationService.getByEMail(email));
+	}
+
+	@Then("sollte kein Kunde mit der EMail $email existieren")
+	public void existiertNicht(String email) {
+		assertNull(registrationService.getByEMail(email));
+	}
+
+	@Then("es sollte kein Fehler gemeldet werden")
+	public void keinFehler() {
 		assertFalse(fehler);
 	}
 
 	@Then("sollte ein Fehler gemeldet werden")
 	public void fehler() {
 		assertTrue(fehler);
+	}
+
+	@Then("sollte die Registierung des anderen Kunden nicht erfolgreich sein")
+	public void andererRegistrierungNichtErfolgreich() {
+		assertFalse(andererKundeRegistrierungErfolg);
 	}
 
 }

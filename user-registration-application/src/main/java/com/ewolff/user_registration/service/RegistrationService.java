@@ -81,4 +81,8 @@ public class RegistrationService {
 		}
 	}
 
+	public void clean() {
+		jdbcTemplate.update("DELETE FROM T_USER");
+	}
+
 }

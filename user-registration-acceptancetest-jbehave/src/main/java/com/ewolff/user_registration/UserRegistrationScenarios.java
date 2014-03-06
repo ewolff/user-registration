@@ -12,6 +12,7 @@ import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.Format;
+import org.jbehave.core.reporters.IdeOnlyConsoleOutput;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.CandidateSteps;
 import org.jbehave.core.steps.InstanceStepsFactory;
@@ -24,8 +25,10 @@ public class UserRegistrationScenarios extends JUnitStories {
 		return new MostUsefulConfiguration()
 				.useStoryLoader(new LoadFromClasspath(this.getClass()))
 				.useKeywords(new LocalizedKeywords(Locale.GERMANY))
+				.useDefaultStoryReporter(new IdeOnlyConsoleOutput())
 				.useStoryReporterBuilder(
-						new StoryReporterBuilder().withFormats(Format.HTML));
+						new StoryReporterBuilder().withFormats(Format.HTML,
+								Format.ANSI_CONSOLE).withFailureTrace(true));
 	}
 
 	@Override

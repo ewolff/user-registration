@@ -35,16 +35,24 @@ public class RegistrationService {
 	 *             if the user had invalid data
 	 */
 	public boolean register(User user) throws IllegalArgumentException {
-		if (getByEMail(user.getEmail()) != null)
+		String email = user.getEmail();
+		if (getByEMail(email) != null)
 			return false;
-		if (!emailPattern.matcher(user.getEmail()).find()) {
+		if (!validEMailAdress(email)) {
 			throw new IllegalArgumentException("Invalid EMail Adress!");
 		}
 		jdbcTemplate.update(
 				"INSERT INTO T_USER(firstname, name, email) VALUES (?, ?, ?)",
-				user.getFirstname(), user.getName(), user.getEmail());
+				user.getFirstname(), user.getName(), email);
 
 		return true;
+	}
+
+	public boolean validEMailAdress(String email) {
+		if (email==null) {
+			return false;
+		}
+		return emailPattern.matcher(email).find();
 	}
 
 	public User getByEMail(String email) {
@@ -77,7 +85,7 @@ public class RegistrationService {
 		int numberOfRows = jdbcTemplate.update(
 				"DELETE FROM T_USER WHERE email=?", email);
 		if (numberOfRows == 0) {
-			throw new IllegalArgumentException("User not registered!");
+			throw new IllegalArgumentException("User with email"+email+" not registered!");
 		}
 	}
 

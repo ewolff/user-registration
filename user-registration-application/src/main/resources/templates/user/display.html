@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Kunde</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Kunde</h1>
+	<div layout:fragment="content" class="container">
+		<div class="row">
+			<div class="span4">Vorname</div>
+			<div class="span8" th:text="${user.firstname}">firstname</div>
+		</div>
+
+		<div class="row">
+			<div class="span4">Name</div>
+			<div class="span8" th:text="${user.name}">name</div>
+		</div>
+
+		<div class="row">
+			<div class="span4">EMail</div>
+			<div class="span8" th:text="${user.email}">email</div>
+		</div>
+
+		<div class="row">
+			<form id="kundeDelete" th:action="@{/userdelete}" action="#"
+				method="post">
+				<input type="hidden" name="email" th:attr="value=${user.email}" />
+				<div class="span4">
+					<input class="btn btn-link" type="submit" value="Löschen" />
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+</body>
+</html>

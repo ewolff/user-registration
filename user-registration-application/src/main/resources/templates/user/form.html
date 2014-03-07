@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Kunde anlegen</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Kunde anlegen</h1>
+	<div layout:fragment="content" class="container">
+		<form id="kundeForm" th:action="@{/user}" th:object="${user}"
+			action="#" method="post">
+			<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+				<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+					Validation error</p>
+			</div>
+			<label for="Vorname">Vorname</label>
+			<input type="text" th:field="*{firstname}"
+				th:class="${#fields.hasErrors('firstname')} ? 'field-error'" /> 
+			<label for="Name">Name</label>
+			<input type="text" th:field="*{name}"
+				th:class="${#fields.hasErrors('name')} ? 'field-error'" /> 
+			<label for="EMail">EMail</label>
+			<input type="text" th:field="*{email}"
+				th:class="${#fields.hasErrors('email')} ? 'field-error'" />
+			<div class="form-actions">
+				<input type="submit" value="Registrieren" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>

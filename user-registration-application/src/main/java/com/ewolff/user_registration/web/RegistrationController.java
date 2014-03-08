@@ -37,8 +37,8 @@ public class RegistrationController {
 	@RequestMapping(value = "/usersearch", method = RequestMethod.GET)
 	public ModelAndView suche(@RequestParam("email") String email) {
 		User user = registrationService.getByEMail(email);
-		if (user!=null) {
-		return new ModelAndView("user/display", "user", user);
+		if (user != null) {
+			return new ModelAndView("user/display", "user", user);
 		} else {
 			return new ModelAndView("user/not-found");
 		}
@@ -58,9 +58,13 @@ public class RegistrationController {
 								"User konnte nicht registriert werden - EMail Adresse schon verwendet?"));
 			}
 		}
-		return new ModelAndView("user/display", "user", user);
+		if (bindingResult.hasErrors()) {
+			return new ModelAndView("user/form", "user", user);
+		} else {
+			return new ModelAndView("user/display", "user", user);
+		}
 	}
-	
+
 	@RequestMapping(value = "/userdelete", method = RequestMethod.POST)
 	public String delete(@RequestParam("email") String email) {
 		registrationService.unregister(email);

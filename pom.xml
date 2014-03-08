@@ -15,6 +15,7 @@
 	<modules>
 		<module>user-registration-application</module>
 		<module>user-registration-acceptancetest-jbehave</module>
+		<module>user-registration-acceptancetest-selenium</module>
 	</modules>
 
 	<dependencies>

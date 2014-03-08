@@ -12,6 +12,10 @@
 		<version>1.0.0.RC4</version>
 	</parent>
 
+	<properties>
+		<java.version>1.7</java.version>
+	</properties>
+
 	<modules>
 		<module>user-registration-application</module>
 		<module>user-registration-acceptancetest-jbehave</module>

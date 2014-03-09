@@ -6,6 +6,7 @@ import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.embedder.Embedder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,7 @@ import org.springframework.boot.SpringApplication;
 import com.ewolff.user_registration.domain.User;
 import com.ewolff.user_registration.service.RegistrationService;
 
-public class UserRegistrationSteps {
+public class UserRegistrationSteps extends Embedder {
 
 	@Autowired
 	RegistrationService registrationService;
@@ -23,7 +24,7 @@ public class UserRegistrationSteps {
 
 	private User andererKunde;
 
-	private boolean andererKundeRegistrierungErfolg;
+	private boolean andererKundeRegistrierungErfolg = false;
 
 	public UserRegistrationSteps() {
 		super();
@@ -39,6 +40,8 @@ public class UserRegistrationSteps {
 	@BeforeStory
 	public void cleanUp() {
 		registrationService.clean();
+		fehler = false;
+		andererKundeRegistrierungErfolg = false;
 	}
 
 	@Given("ein neuer Kunde mit EMail $email Vorname $vorname Name $name")
@@ -61,6 +64,15 @@ public class UserRegistrationSteps {
 		}
 	}
 
+	@When("der Kunde sich registriert")
+	public void registerKunde() {
+		try {
+			registrationService.register(kunde);
+		} catch (IllegalArgumentException ex) {
+			fehler = true;
+		}
+	}
+
 	@When("der Kunde dann geloescht wird")
 	public void loescheKunde() {
 		registrationService.unregister(kunde.getEmail());
@@ -76,7 +88,7 @@ public class UserRegistrationSteps {
 		assertNull(registrationService.getByEMail(email));
 	}
 
-	@Then("es sollte kein Fehler gemeldet werden")
+	@Then("sollte kein Fehler gemeldet werden")
 	public void keinFehler() {
 		assertFalse(fehler);
 	}
@@ -86,7 +98,7 @@ public class UserRegistrationSteps {
 		assertTrue(fehler);
 	}
 
-	@Then("sollte die Registierung des anderen Kunden nicht erfolgreich sein")
+	@Then("sollte die Registrierung des anderen Kunden nicht erfolgreich sein")
 	public void andererRegistrierungNichtErfolgreich() {
 		assertFalse(andererKundeRegistrierungErfolg);
 	}

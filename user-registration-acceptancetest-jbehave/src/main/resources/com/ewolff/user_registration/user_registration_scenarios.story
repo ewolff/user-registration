@@ -1,3 +1,9 @@
+Erzählung:
+Um die Web Site zu nutzen
+Als ein Kunde
+Möchte ich mich als Kunde registrieren,
+Damit ich einen Account bei der Web Site habe
+
 Szenario: Kunde registriert sich erfolgreich
 
 Gegeben ein neuer Kunde mit EMail eberhard.wolff@gmail.com Vorname Eberhard Name Wolff

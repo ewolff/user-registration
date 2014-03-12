@@ -29,6 +29,7 @@
 			<groupId>com.ewolff</groupId>
 			<artifactId>user-registration-application</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<classifier>classes</classifier>
 		</dependency>
 	</dependencies>
 

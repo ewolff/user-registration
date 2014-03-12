@@ -4,6 +4,7 @@
 	<groupId>com.ewolff</groupId>
 	<artifactId>user-registration-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>com.ewolff</groupId>
@@ -29,5 +30,17 @@
 			<artifactId>hsqldb</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<attachClasses>true</attachClasses>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

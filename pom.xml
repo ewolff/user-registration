@@ -20,6 +20,7 @@
 		<module>user-registration-application</module>
 		<module>user-registration-acceptancetest-jbehave</module>
 		<module>user-registration-acceptancetest-selenium</module>
+		<module>user-registration-capacitytest-gatling</module>
 	</modules>
 
 	<dependencies>

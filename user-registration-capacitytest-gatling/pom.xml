@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ewolff</groupId>
+	<artifactId>user-registration-capacitytest-gatling</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<gatling.version>2.0.0-M3a</gatling.version>
+	</properties>
+
+	<parent>
+		<groupId>com.ewolff</groupId>
+		<artifactId>user-registration</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ewolff</groupId>
+			<artifactId>user-registration-application</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<classifier>classes</classifier>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>excilys</id>
+			<name>Excilys Repository</name>
+			<url>http://repository.excilys.com/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>excilys</id>
+			<name>Excilys Repository</name>
+			<url>http://repository.excilys.com/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>${gatling.version}</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<!-- Default values -->
+							<!--<configDir>src/test/resources</configDir> <dataFolder>src/test/resources/data</dataFolder> 
+								<resultsFolder>target/gatling/results</resultsFolder> <requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder> 
+								<simulationsFolder>src/test/scala</simulationsFolder> <includes> <include>**/*.scala</include> 
+								</includes> -->
+							<excludes>
+								<exclude>advanced/*.scala</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

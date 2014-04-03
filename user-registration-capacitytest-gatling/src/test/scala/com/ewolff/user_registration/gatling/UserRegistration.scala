@@ -53,9 +53,8 @@ class UserRegistration extends Simulation {
         .exec(http("GET form")
           .get("/user"))
         .pause(7)
-        .feed(emailFeeder)
-        .exec(http("(7)
-  exec(http("GET index")
+        .feed(emailFeeder)     
+  .exec(http("GET index")
         .get("/")
         .headers(headers_1))
         .pause(88 milliseconds)
@@ -65,10 +64,8 @@ class UserRegistration extends Simulation {
         .pause(1)
         .exec(http("GET form")
           .get("/user"))
-        7
-        pause
-      .feed(emaiemailFeeder
-        exec(emailFeeder)
+       .pause(7)
+      .feed(emailFeeder)
       .exec(http("POST user data")
           .post("/user")
           .headers(headers_4)
@@ -76,12 +73,10 @@ class UserRegistration extends Simulation {
           .param("name", "Wolff")
           .param("email", "${email}"))
       .pause(4)
- 4
-        exec((4)
       .exec(http("POST delete user")
           .post("/userdelete")
           .headers(headers_4)
-          .param("email", "${email}")))))))
+          .param("email", "${email}")))
     }
 
   setUp(scn.inject(ramp(5 users) over (10 seconds))).protocols(httpProtocol)

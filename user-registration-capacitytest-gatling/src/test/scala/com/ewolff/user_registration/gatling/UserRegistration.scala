@@ -9,6 +9,8 @@ import io.gatling.http.Headers.Values._
 import scala.concurrent.duration._
 import bootstrap._
 import assertions._
+import org.springframework.boot.SpringApplication
+import com.ewolff.user_registration.RegistrationApplication
 
 class UserRegistration extends Simulation {
 
@@ -60,5 +62,6 @@ class UserRegistration extends Simulation {
           .param("email", "${email}")))
     }
 
+  SpringApplication.run(classOf[RegistrationApplication])
   setUp(scn.inject(ramp(5 users) over (10 seconds))).protocols(httpProtocol)
 }

@@ -1,4 +1,3 @@
-
 package com.ewolff.user_registration.gatling
 
 import io.gatling.core.Predef._
@@ -28,54 +27,36 @@ class UserRegistration extends Simulation {
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
     .acceptLanguageHeader("en,en-us;q=0.5")
-    .connection("keep-alive")
+    .connection("keep-alive").
+    baseHeaders(Map("Cache-Control" -> "max-age=0"))
 
-  val headers_1 = Map(
-    "Cache-Control" -> """max-age=0""")
 
-  val headers_2 = Map(
-    "Accept" -> """text/css,*/*;q=0.1""",
-    "Cache-Control" -> """max-age=0""")
-
-  val headers_4 = Map(
-    "Content-Type" -> """application/x-www-form-urlencoded""")
+  val formHeader = Map(
+    "Content-Type" -> "application/x-www-form-urlencoded")
 
   val scn = scenario("Registration")
-        .repeat(10) {(
-      exec(http("GET index")
-        .get("/")
-        .headers(headers_1))
+    .repeat(10) {
+      (
+        exec(http("GET index")
+          .get("/"))
         .pause(88 milliseconds)
         .exec(http("GET css")
-          .get("/css/bootstrap.min.css")
-          .headers(headers_2))
+          .get("/css/bootstrap.min.css"))
         .pause(1)
         .exec(http("GET form")
           .get("/user"))
         .pause(7)
-        .feed(emailFeeder)     
-  .exec(http("GET index")
-        .get("/")
-        .headers(headers_1))
-        .pause(88 milliseconds)
-        .exec(http("GET css")
-          .get("/css/bootstrap.min.css")
-          .headers(headers_2))
-        .pause(1)
-        .exec(http("GET form")
-          .get("/user"))
-       .pause(7)
-      .feed(emailFeeder)
-      .exec(http("POST user data")
+        .feed(emailFeeder)
+        .exec(http("POST user data")
           .post("/user")
-          .headers(headers_4)
+          .headers(formHeader)
           .param("firstname", "Eberhard")
           .param("name", "Wolff")
           .param("email", "${email}"))
-      .pause(4)
-      .exec(http("POST delete user")
+        .pause(4)
+        .exec(http("POST delete user")
           .post("/userdelete")
-          .headers(headers_4)
+          .headers(formHeader)
           .param("email", "${email}")))
     }
 

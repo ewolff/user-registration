@@ -42,8 +42,8 @@
 					<childDelegation>true</childDelegation>
 					<useManifestOnlyJar>false</useManifestOnlyJar>
 					<useSystemClassLoader>false</useSystemClassLoader>
-					<reuseForks>false</reuseForks>
-					<forkMode>never</forkMode>
+					<reuseForks>true</reuseForks>
+					<forkCount>1</forkCount>
 				</configuration>
 			</plugin>
 		</plugins>

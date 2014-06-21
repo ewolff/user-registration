@@ -1,5 +1,7 @@
 package com.ewolff.user_registration.web;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +18,8 @@ import com.ewolff.user_registration.service.RegistrationService;
 
 @Controller
 public class RegistrationController {
+
+	private Log log = LogFactory.getLog(RegistrationController.class);
 
 	@Autowired
 	private RegistrationController(RegistrationService registrationService) {
@@ -48,17 +52,24 @@ public class RegistrationController {
 	public ModelAndView create(@ModelAttribute User user,
 			BindingResult bindingResult, RedirectAttributes redirect) {
 		if (!registrationService.validEMailAdress(user.getEmail())) {
+			log.info(String.format("email=%s nicht valide", user.getEmail()));
 			bindingResult.addError(new FieldError("user", "email",
 					"EMail Adresse nicht valide"));
 		} else {
 			boolean registrationResult = registrationService.register(user);
 			if (!registrationResult) {
+				log.info(String
+						.format("email=%s konnte nicht registriert werden - EMail Adresse schon verwendet?",
+								user.getEmail()));
 				bindingResult
 						.addError(new FieldError("user", "email",
 								"User konnte nicht registriert werden - EMail Adresse schon verwendet?"));
 			}
 		}
 		if (bindingResult.hasErrors()) {
+			log.info(String.format(
+					"email=%s hatte Fehler - Formular neu anzeigen",
+					user.getEmail()));
 			return new ModelAndView("user/form", "user", user);
 		} else {
 			return new ModelAndView("user/display", "user", user);

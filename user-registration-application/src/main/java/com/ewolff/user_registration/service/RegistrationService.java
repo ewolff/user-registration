@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -16,6 +16,8 @@ import com.ewolff.user_registration.domain.User;
 
 @Service
 public class RegistrationService {
+
+	private Log log = LogFactory.getLog(RegistrationService.class);
 
 	private Pattern emailPattern = Pattern.compile(
 			"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
@@ -36,20 +38,25 @@ public class RegistrationService {
 	 */
 	public boolean register(User user) throws IllegalArgumentException {
 		String email = user.getEmail();
-		if (getByEMail(email) != null)
+		if (getByEMail(email) != null) {
+			log.info(String.format("User with email=%s already registered",
+					email));
 			return false;
+		}
 		if (!validEMailAdress(email)) {
+			log.info(String.format("email=%s invalid", email));
 			throw new IllegalArgumentException("Invalid EMail Adress!");
 		}
 		jdbcTemplate.update(
 				"INSERT INTO T_USER(firstname, name, email) VALUES (?, ?, ?)",
 				user.getFirstname(), user.getName(), email);
-
+		log.info(String.format("Registered firstname=%s name=%s email=%s",
+				user.getFirstname(), user.getName(), email));
 		return true;
 	}
 
 	public boolean validEMailAdress(String email) {
-		if (email==null) {
+		if (email == null) {
 			return false;
 		}
 		return emailPattern.matcher(email).find();
@@ -85,8 +92,13 @@ public class RegistrationService {
 		int numberOfRows = jdbcTemplate.update(
 				"DELETE FROM T_USER WHERE email=?", email);
 		if (numberOfRows == 0) {
-			throw new IllegalArgumentException("User with email"+email+" not registered!");
+			log.info(String.format(
+					"Could not unregister - user with email=%s not registered",
+					email));
+			throw new IllegalArgumentException(String.format(
+					"User with email=%s not registered!", email));
 		}
+		log.info(String.format("User with email=%s unregistered", email));
 	}
 
 	public void clean() {

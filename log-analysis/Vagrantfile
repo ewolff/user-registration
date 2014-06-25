@@ -12,8 +12,6 @@ Vagrant.configure("2") do |config|
     d.build_image "--tag=elasticsearch /vagrant/elasticsearch"
     d.build_image "--tag=logstash /vagrant/logstash"
     d.build_image "--tag=user-registration /vagrant/user-registration"
-    d.run "kibana",
-      args: "-p 8080:8080"
     d.run "elasticsearch",
       args: "-p 9200:9200"
     d.run "kibana",

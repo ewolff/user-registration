@@ -1,6 +1,8 @@
 The Application
 ==========
 
+[German / Deutsch](LIESMICH.md)
+
 The application itself just contains functionality to register users. Users are stored in an In-Memory-Database.
 
 - You can run the application using `mvn spring-boot:run`

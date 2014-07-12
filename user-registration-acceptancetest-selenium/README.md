@@ -1,7 +1,10 @@
 Selenium Acceptance Tests
 ================
 
-This project contains acceptance tests with Selenium. Look at `src/test/java` for the stories that are part of this test.
+[German / Deutsch](LIESMICH.md)
+
+This project contains acceptance tests with Selenium. Look at
+`src/test/java` for the source code of the tests.
 
 To run:
 

@@ -1,7 +1,11 @@
 Graphite for Monitoring
 ===============
 
-This project creates a VM with the application in a Docker container and a separate Docker container for Graphite. Graphite can be used as a monitoring tool for the application.
+[German / Deutsch](LIESMICH.md) 
+
+This project creates a VM with the application in a Docker container
+and a separate Docker container for Graphite. Graphite can be used as
+a monitoring tool for the application.
 
 To run:
 

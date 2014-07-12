@@ -1,13 +1,16 @@
 User Registration
 ===========
 
-This is an example application  that shows basic technical features
+[German / Deutsch](LIESMICH.md)
+
+This is an example that shows basic technical features
 for an application that should run in a Continuous Delivery
 Pipeline. The focus is to provide a playground that you can build your
 own experiments on.
 
 The application is written in Java and uses Spring Boot. To compile
 and execute all tests:
+
 - Install Maven
 - Execute `mvn install` in this directory.
 
@@ -23,12 +26,11 @@ As part of the Maven build the following projects are built:
 - The subdir `user-registration-acceptancetest-selenium` contains
   automated acceptance tests implemented with Selenium. They are run
   through the Web GUI.
-- Finally the  `user-registration-acceptancetest-gatling` contains
+- Finally the subdir `user-registration-acceptancetest-gatling` contains
   automated capacity tests implemented with Gatling. These are
   executed throught the Web GUI.
 
-Additionally to these projects that are part of the Maven build
-additional projects are provided:
+Additionally to these projects built by Maven additional projects are provided:
 
 - The subdir `docker` contains a setup to install the application in a
   Docker container in a Vagrant box. Docker is a lightweight approach

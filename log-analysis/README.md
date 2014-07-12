@@ -1,7 +1,13 @@
-Elasticsearch / Logstash / Kibana for Monitoring
+Elasticsearch / Logstash / Kibana to analyse logs
 ===============
 
-This project creates a VM with the application in a Docker container and a separate Docker container for Elasticseach, Logstash and Kibana each. Logstash parses the log files of the application, Elasticsearch stores the resulting data and Kibana allows you to analyse the information.
+[German / Deutsch](LIESMICH.md) 
+
+This project creates a VM with the application in a Docker container
+and a separate Docker container for Elasticseach, Logstash and Kibana
+each. Logstash parses the log files of the application, Elasticsearch
+stores the resulting data and Kibana allows you to analyse the
+information.
 
 To run:
 

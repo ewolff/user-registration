@@ -1,6 +1,8 @@
 Gatling Capacity Tests
 ================
 
+[German / Deutsch](LIESMICH.md)
+
 This project contains capacity tests with Gatling. Look at
 `src/test/scala` for the test code.
 

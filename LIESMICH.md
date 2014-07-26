@@ -30,7 +30,7 @@ ausgeführt.
 Zustäzlich zu diesen Maven-Projekten gibt es noch einige weitere
 Projekte:
 
-- Das Unterverzeichnis `docker` enthält ein Seupt, um die Anwendung in
+- Das Unterverzeichnis `docker` enthält ein Setup, um die Anwendung in
   einem Docker-Container innerhalb einer Vagrant-Box zu
   installieren. Docker ist ein leichtgewichtiger Ansatz, der Linux
   Container nutzt, um Anwendungen in einer eigenen Umgebung zu

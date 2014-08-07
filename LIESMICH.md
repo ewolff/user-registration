@@ -44,6 +44,8 @@ Projekte:
   Anwendung ablaufen zu lassen und die Log-Informationen mit Logstash
   zu analysieren Die Informationen werden dann in Elasticsearch
   gespeichert und können mit Kibana analysisert werden.
+- Im Unterverzeichnis `chef` steht eine Beispiel für ein Setup mit
+  Chef zur Verfügung - es nutzt allerdings nicht die Beispielanwendung.
 
 Bevor man diese Projekte nutzen kann, muss zunächst der Maven-Build
 des Basis-Projekts durchlaufen. Weitere Informationen finden sich im

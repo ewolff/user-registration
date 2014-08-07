@@ -1,4 +1,3 @@
-FROM ubuntu:12.10
-MAINTAINER eberhard.wolff@gmail.com
-RUN apt-get update ; apt-get dist-upgrade -y
+FROM ubuntu:14.04
+RUN apt-get update ; apt-get dist-upgrade -y --force-yes
 RUN apt-get install -y openjdk-7-jre-headless

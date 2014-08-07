@@ -1,7 +1,7 @@
-FROM ubuntu-update
-MAINTAINER eberhard.wolff@gmail.com
-RUN apt-get install -y python3 python3-minimal python-cairo-dev python-django python-ldap python-memcache python-pysqlite2 sqlite3 python-setuptools
-RUN apt-get install -y build-essential python2.7-dev
+FROM ubuntu:12.04
+RUN apt-get update
+RUN apt-get dist-upgrade -y --force-yes
+RUN apt-get install --force-yes -y wget python3 python3-minimal python-cairo-dev python-django python-ldap python-memcache python-pysqlite2 sqlite3 python-setuptools build-essential python2.7-dev
 RUN easy_install zope.interface
 RUN easy_install twisted
 RUN easy_install txamqp

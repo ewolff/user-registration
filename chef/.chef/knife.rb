@@ -17,8 +17,8 @@ knife[:ssh_user]       = 'ubuntu'
 knife[:region]         = 'eu-west-1'
 knife[:flavor]         = 't1.micro'
 
-knife[:image]          = 'ami-a0e81fd7'
-## this is an Ubuntu 10.04 LTS image
+knife[:image]          = 'ami-096cbd7e'
+## this is an Ubuntu 14.04 LTS image
  knife[:groups]        = 'default'
 ## security group - create it at https://console.aws.amazon.com/ec2/home?region=eu-west-1#s=SecurityGroups
 ## ensure port 8080 ist made availabele

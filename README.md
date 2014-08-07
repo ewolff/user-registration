@@ -52,3 +52,7 @@ the projects in the README.md file in the corresponding subdir.
 
 The code is provided under Apache 2.0 license - see the file LICENSE
 in this dir.
+
+PLEASE NOTE: This example is not production ready. For example some of
+the services run as root even though they can be accessed through the
+net. This poses a security thread.

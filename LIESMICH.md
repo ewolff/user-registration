@@ -53,3 +53,8 @@ LIESMICH.md im jeweiligen Unterverzeichnis.
 
 Der Code steht unter Apache-2.0-Lizenz - siehe die Datei LICENSE
 in diesem Verzeichnis.
+
+HINWEIS: Dieses Beispiel ist nicht für Produktionsumgebungen
+geeignet. Beispielsweise laufen einige Prozesse als root und sind
+durch das Netz direkt ansprechbar. Das führt zu einem
+Sicherheitsrisiko und muss in Produktionsumgebungen vermieden werden.

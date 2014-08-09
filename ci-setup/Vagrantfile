@@ -1,0 +1,26 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "ubuntu/trusty64"
+
+  # use package caching if available
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end  
+  
+  config.vm.network "private_network", ip: "192.168.33.100"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: "apt-get update"
+
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = "manifests"
+    puppet.module_path    = "modules_ext"
+    puppet.manifest_file  = "site.pp"
+  end
+
+end

@@ -18,10 +18,7 @@
 
 node.run_state[:java_pkgs] = value_for_platform(
   ["debian","ubuntu"] => {
-    "default" => ["openjdk-6-jre","default-jre","icedtea6-plugin"] # icedtea6-plugin included to make update-java-alternatives work correctly
+    "default" => ["openjdk-7-jre","default-jre"] 
   },
-  ["centos","redhat","fedora"] => {
-    "default" => ["java-1.6.0-openjdk","java-1.6.0-openjdk-devel"]
-  },
-  "default" => ["openjdk-6-jre-headless","default-jre-headless","default-jre"]
+  "default" => ["openjdk-7-jre-headless","default-jre-headless","default-jre"]
 )

@@ -31,7 +31,7 @@ ruby_block "reload_ohai" do
 end
 
 execute "update-java-alternatives" do
-  command "update-java-alternatives --jre -s java-1.6.0-#{node["java"]["install_flavor"]}"
+  command "update-java-alternatives --jre -s java-1.7.0-#{node["java"]["install_flavor"]}"
   returns 0
   only_if do platform?("ubuntu", "debian") end
   action :nothing

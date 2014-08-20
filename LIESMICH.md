@@ -45,7 +45,9 @@ Projekte:
   zu analysieren Die Informationen werden dann in Elasticsearch
   gespeichert und können mit Kibana analysisert werden.
 - Im Unterverzeichnis `chef` steht eine Beispiel für ein Setup mit
-  Chef zur Verfügung - es nutzt allerdings nicht die Beispielanwendung.
+  Chef zur Verfügung.
+- Das Unterverzeichnis `shell` enthält ein Deployment der Anwendung
+  mit einem einfachen Shell-Skript.
 
 Bevor man diese Projekte nutzen kann, muss zunächst der Maven-Build
 des Basis-Projekts durchlaufen. Weitere Informationen finden sich im

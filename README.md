@@ -43,8 +43,10 @@ Additionally to these projects built by Maven additional projects are provided:
 - The subdir `log-analysis` contains a setup to run the application
   and analyze the log information using Logstash. The information is
   then stored in Elasticsearch and can be analyzed using Kibana.
- - The subdir `chef` contains a sample for a Chef setup - it is not
-   using the demo app, though.
+ - The subdir `chef` contains a sample for a Chef setup.
+ - In the subdir `shell` you can find an example how the application
+   can be provisioned using a simple shell script.
+   
 
 Please note that you need to execute the Maven build before you can
 run these additional projects. You will find more information about

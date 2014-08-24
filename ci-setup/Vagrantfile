@@ -8,7 +8,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.cache.scope = :box
   end  
   
-  config.vm.network "private_network", ip: "192.168.33.100"
+  config.vm.network "forwarded_port", guest: 9191, host: 9191
+  config.vm.network "forwarded_port", guest: 9292, host: 9292
+  config.vm.network "forwarded_port", guest: 9393, host: 9393
+  
+  # uncomment to make the box available over a static IP address
+  #config.vm.network "private_network", ip: "192.168.33.100"
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = 2048
@@ -16,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "shell", inline: "apt-get update"
+  config.vm.provision "shell", path: "install-modules.sh"
 
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "manifests"

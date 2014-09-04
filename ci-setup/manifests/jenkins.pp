@@ -19,7 +19,8 @@ $plugins = [
   'disk-usage',
   'monitoring',
   'ws-cleanup',
-  'envinject'
+  'envinject',
+  'sonar'
 ]
 
 jenkins::plugin { $plugins : }

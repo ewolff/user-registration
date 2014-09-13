@@ -11,6 +11,7 @@ information.
 
 To run:
 
+- Install Maven, see http://maven.apache.org/download.cgi#Installation
 - Install Vagrant as discussed at
   http://docs.vagrantup.com/v2/installation/index.html
 - Install Virtual Box from https://www.virtualbox.org/wiki/Downloads

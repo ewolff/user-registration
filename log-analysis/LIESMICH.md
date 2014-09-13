@@ -12,6 +12,7 @@ dient zur Analyse.
 
 Zum Ausführen:
 
+- Installiere Maven, siehe http://maven.apache.org/download.cgi#Installation
 - Installiere Vagrant, siehe
   http://docs.vagrantup.com/v2/installation/index.html
 - Installiere Virtual Box von https://www.virtualbox.org/wiki/Downloads

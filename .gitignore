@@ -17,6 +17,7 @@ tmp/**/*
 *~.nib
 local.properties
 .classpath
+.vagrant
 .settings/
 .loadpath
 

@@ -1,0 +1,31 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "chef/ubuntu-14.04"
+  config.vm.synced_folder "../user-registration-application/target", "/target", create: true
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
+  config.vm.network "forwarded_port", guest: 9200, host: 9200
+
+  config.vm.provision "docker" do |d|
+    d.build_image "--tag=java /vagrant/java"
+    d.build_image "--tag=tomcat /vagrant/tomcat"
+    d.build_image "--tag=redis /vagrant/redis"
+    d.build_image "--tag=kibana /vagrant/kibana"
+    d.build_image "--tag=elasticsearch /vagrant/elasticsearch"
+    d.build_image "--tag=logstash-parsing /vagrant/logstash-parsing"
+    d.build_image "--tag=logstash-shipping /vagrant/logstash-shipping"
+    d.build_image "--tag=user-registration /vagrant/user-registration"
+    d.run "elasticsearch",
+      args: "-p 9200:9200"
+    d.run "redis",
+      args: "-p 6379:6379"
+    d.run "logstash-parsing",
+      args: "--link elasticsearch:elasticsearch --link redis:redis"
+    d.run "logstash-shipping",
+      args: "--link redis:redis"
+    d.run "user-registration",
+      args: "-p 8081:8080 -v /target:/target --volumes-from logstash-shipping"
+    d.run "kibana",
+      args: "-p 8080:8080"
+  end
+
+end

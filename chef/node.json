@@ -1,1 +1,1 @@
-{ "run_list": "role[tomcatserver.json]" }
+{ "run_list": "role[tomcatserver]" }

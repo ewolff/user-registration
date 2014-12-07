@@ -1,4 +1,4 @@
 FROM ubuntu:14.04
-RUN apt-get update ; apt-get dist-upgrade -y
-RUN apt-get install -y openjdk-7-jre-headless
+RUN apt-get update -qq ; apt-get dist-upgrade -y -qq
+RUN apt-get install -qq -y openjdk-7-jre-headless
 

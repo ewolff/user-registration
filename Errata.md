@@ -8,11 +8,10 @@ Kapitel 11 Continuous Delivery und DevOps
 
 ### 11.1 Einführung
 
-Buch:
-
+Buch:  
 DevOps stellt die Kollaboration von Betrieb (Dev) und Entwicklung (Ops) in den Mittelpunkt.
 
-
-Richtig wäre:
-
+Richtig wäre:  
 DevOps stellt die Kollaboration von Betrieb (*Ops*) und Entwicklung (*Dev*) in den Mittelpunkt.
+
+Danke an: Matthias Huber

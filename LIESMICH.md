@@ -3,7 +3,11 @@ User Registration
 
 Diese ist ein einfaches Beispiel für die grundlegenden technischen
 Features einer Anwendung, die in einer Continuous-Delivery-Pipeline
-laufen soll. Es ist eine Basis für eigene Experimente.
+laufen soll. Es ist eine Basis für eigene Experimente. Es dient als
+Beispiel für das
+[Continuous Delivery Buch](https://bit.ly/CD-Buch-Amzn) .
+
+Die [Errata](Errata.md) sind ebenfalls in diesem Projekt enthalten.
 
 Die Anwendung ist in Java geschrieben und nutzt Spring Boot. Um sie zu
 kompilieren und alle Tests auszuführen:
@@ -27,7 +31,7 @@ ausgeführt.
   automatisierte Kapazitätstests mit Gatling. SIe nutzen die Web GUI
   für die Tests.
 
-Zustäzlich zu diesen Maven-Projekten gibt es noch einige weitere
+Zusätzlich zu diesen Maven-Projekten gibt es noch einige weitere
 Projekte:
 
 - Das Unterverzeichnis `docker` enthält ein Setup, um die Anwendung in

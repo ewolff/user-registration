@@ -12,7 +12,7 @@ Buch, p67:
 neben Ruby, Node.js, Ruby oder Java
 
 Richtig wäre:  
-neben Ruby, Node.js, Clojure, Scala oder Java
+neben Ruby, Node.js, *Clojure, Scala* oder Java
 
 Danke an: Mario David
 

@@ -8,11 +8,11 @@ Kapitel 5 Akzeptanztests
 
 ### 5.4 GUI-basierte Akzeptanztests
 
-Buch, p129:_
+Buch, p129:  
 KundeExistiert überprüft, dass der Kunde tatsächlich nicht mehr
 vorhanden ist.
 
-Richtig wäre:_
+Richtig wäre:  
 *KundeExistiertNicht* überprüft, dass der Kunde tatsächlich nicht mehr
 vorhanden ist.
 

@@ -3,6 +3,19 @@ Errata für das Continuous Delivery Buch
 
 In dieser Datei finden sich die Errata für das [Continuous Delivery Buch](https://bit.ly/CD-Buch-Amzn).
 
+Kapitel 3 Infrastruktur bereitstellen
+------------------------------
+
+### 3.7 Platform as a Service (PaaS)
+
+Buch, p67:  
+neben Ruby, Node.js, Ruby oder Java
+
+Richtig wäre:  
+neben Ruby, Node.js, Clojure, Scala oder Java
+
+Danke an: Mario David
+
 Kapitel 5 Akzeptanztests
 ---------------------
 

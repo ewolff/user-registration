@@ -4,11 +4,7 @@ import io.gatling.core.Predef._
 import io.gatling.core.session.Expression
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
-import io.gatling.http.Headers.Names._
-import io.gatling.http.Headers.Values._
 import scala.concurrent.duration._
-import bootstrap._
-import assertions._
 import org.springframework.boot.SpringApplication
 import com.ewolff.user_registration.RegistrationApplication
 
@@ -29,8 +25,8 @@ class UserRegistration extends Simulation {
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
     .acceptLanguageHeader("en,en-us;q=0.5")
-    .connection("keep-alive").
-    baseHeaders(Map("Cache-Control" -> "max-age=0"))
+    .connection("keep-alive")
+    .header("Cache-Control", "max-age=0")
 
 
   val formHeader = Map(
@@ -52,16 +48,16 @@ class UserRegistration extends Simulation {
         .exec(http("POST user data")
           .post("/user")
           .headers(formHeader)
-          .param("firstname", "Eberhard")
-          .param("name", "Wolff")
-          .param("email", "${email}"))
+          .formParam("firstname", "Eberhard")
+          .formParam("name", "Wolff")
+          .formParam("email", "${email}"))
         .pause(4)
         .exec(http("POST delete user")
           .post("/userdelete")
           .headers(formHeader)
-          .param("email", "${email}")))
+          .formParam("email", "${email}")))
     }
 
   SpringApplication.run(classOf[RegistrationApplication])
-  setUp(scn.inject(ramp(5 users) over (10 seconds))).protocols(httpProtocol)
+  setUp(scn.inject(rampUsers(5) over (10 seconds))).protocols(httpProtocol)
 }

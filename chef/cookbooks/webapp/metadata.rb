@@ -1,3 +1,4 @@
+name             "webapp"
 maintainer       "Eberhard Wolff"
 maintainer_email "eberhard.wolff@gmail.com"
 license          "Apache 2.0 License"

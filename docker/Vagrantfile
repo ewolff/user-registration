@@ -7,6 +7,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "docker" do |d|
     d.build_image "--tag=java /vagrant/java"
     d.build_image "--tag=user-registration /vagrant/user-registration"
+  end    
+  config.vm.provision "docker", run: "always" do |d|    
     d.run "user-registration",
       args: "-p 8080:8080 -v /target:/target -v /log:/log"
   end

@@ -11,7 +11,8 @@ Vagrant.configure("2") do |config|
     d.build_image "--tag=user-registration /vagrant/user-registration"
     d.build_image "--tag=graphite /vagrant/graphite"
   end
-  config.vm.provision "docker", run: "always" do |d|d.run "graphite",
+  config.vm.provision "docker", run: "always" do |d|
+    d.run "graphite",
       args: "-p 8082:80 -p 2003:2003"
     d.run "user-registration",
       args: "-p 8083:8080 -v /target:/target --link graphite:graphite"

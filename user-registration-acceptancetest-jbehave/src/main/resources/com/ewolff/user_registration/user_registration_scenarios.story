@@ -13,7 +13,7 @@ Und sollte kein Fehler gemeldet werden
 
 Szenario: EMail invalide
 
-Gegeben ein neuer Kunde mit EMail HURZ Und Vorname Eberhard Und Name Wolff
+Gegeben ein neuer Kunde mit EMail HURZ Vorname Eberhard Name Wolff
 Wenn der Kunde sich registriert
 Dann sollte ein Fehler gemeldet werden
 

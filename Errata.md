@@ -3,6 +3,21 @@ Errata für das Continuous Delivery Buch
 
 In dieser Datei finden sich die Errata für das [Continuous Delivery Buch](https://bit.ly/CD-Buch-Amzn).
 
+Kapitel 1 Einleitung
+-----------------
+
+### 1.4 Überblick über die Kapitel
+
+Buch, p. 7:  
+DevOps beschreibt das Zusammenwachsen von Betrieb (Dev) und
+Entwicklung (Ops) zu einer Organisationseinheit (Kap. 11).
+
+Richtig wäre:  
+DevOps beschreibt das Zusammenwachsen von Betrieb (*Ops*) und
+Entwicklung (*Dev*) zu einer Organisationseinheit (Kap. 11).
+
+Danke an: Christian Johannsen
+
 Kapitel 3 Infrastruktur bereitstellen
 ------------------------------
 

@@ -1,13 +1,16 @@
 User Registration
 ===========
 
+Please note: there is a newer version at https://github.com/ewolff/user-registration-V2/ .
+It is in a different project because it is the example for the second edition of the [German Continuous Delivery book](http://amzn.to/2bmTazd) .
+
 [German / Deutsch](LIESMICH.md)
 
 This is an example that shows basic technical features
 for an application that should run in a Continuous Delivery
 Pipeline. The focus is to provide a playground that you can build your
-own experiments on. Orignally it was intended as an example for the [German
-Continuous Delivery book](https://bit.ly/CD-Buch-Amzn) .
+own experiments on. Orignally it was intended as an example for the first
+edition of the [German Continuous Delivery book](https://bit.ly/CD-Buch-Amzn) .
 
 The application is written in Java and uses Spring Boot. To compile
 and execute all tests:

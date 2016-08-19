@@ -1,10 +1,14 @@
 User Registration
 ===========
 
+Hinweis: Es gibt eine neue Version des Projekts https://github.com/ewolff/user-registration-V2/ .
+Es ist in einem anderen Projekt, weil es das Beispiel für die zweite Auflage des [Continuous Delivery Buchs](http://amzn.to/2bmTazd)
+ist.
+
 Diese ist ein einfaches Beispiel für die grundlegenden technischen
 Features einer Anwendung, die in einer Continuous-Delivery-Pipeline
 laufen soll. Es ist eine Basis für eigene Experimente. Es dient als
-Beispiel für das
+Beispiel für die erste Auflage des
 [Continuous Delivery Buch](https://bit.ly/CD-Buch-Amzn) .
 
 Die [Errata](Errata.md) sind ebenfalls in diesem Projekt enthalten.
